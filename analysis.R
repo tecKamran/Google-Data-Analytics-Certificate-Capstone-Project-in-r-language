@@ -12,7 +12,6 @@ library(scales)
 
 #---- Set working directory to the folder containing your dataset ----
 # setwd("/path/to/your/folder")
-# Replace the filename below with the exact name you uploaded to Kaggle
 input_file <- "your_dataset.csv"
 
 #---- Read data ----
@@ -38,7 +37,7 @@ summary(df) %>% print()
 write_csv(df, "cleaned_data.csv")
 
 #---- Date parsing (common) ----
-# If there's a date column named 'date' or similar, parse it:
+
 date_cols <- names(df)[str_detect(names(df), "date|time|day", ignore_case = TRUE)]
 if (length(date_cols) > 0) {
   for (c in date_cols) {
@@ -96,9 +95,6 @@ if (length(num_cols) >= 2) {
 #---- Export cleaned data and checkpoints ----
 write_csv(df, "cleaned_data_final.csv")
 
-#---- Optional: produce RMarkdown report (requires rmarkdown) ----
-# You can render an HTML report from an Rmd file if you create one.
-# rmarkdown::render("analysis_report.Rmd", output_file = "analysis_report.html")
 
 #---- Save workspace ----
 save.image("analysis_workspace.RData")
